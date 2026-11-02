@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Project Name : CareWell Hospital Management System (HMS)
+ * Project Name : TrueCare Hospital Management System (HMS)
  * Subject      : C Programming Mini-Project (B.Tech 1st / 2nd Year)
  * Technology   : 100% C Programming (Structures, Arrays, Native Winsock HTTP Server)
  * Description  : An end-to-end Hospital Management Application powered entirely
@@ -693,7 +693,7 @@ int main(void) {
 
     printf("\n");
     printf("====================================================================\n");
-    printf("        CAREWELL HOSPITAL MANAGEMENT SYSTEM - C WEB ENGINE          \n");
+    printf("        TRUECARE HOSPITAL MANAGEMENT SYSTEM - C WEB ENGINE          \n");
     printf("====================================================================\n");
     printf("  [*] Backend Core        : 100%% C Programming\n");
     printf("  [*] Data Structures     : Arrays of Structures (Patient, Doctor, etc.)\n");

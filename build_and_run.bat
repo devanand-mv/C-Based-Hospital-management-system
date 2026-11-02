@@ -1,8 +1,8 @@
 @echo off
-title CareWell Hospital Management System - C Web Engine
+title TrueCare Hospital Management System - C Web Engine
 cls
 echo ====================================================================
-echo        CAREWELL HOSPITAL MANAGEMENT SYSTEM - C WEB ENGINE
+echo        TRUECARE HOSPITAL MANAGEMENT SYSTEM - C WEB ENGINE
 echo ====================================================================
 echo.
 

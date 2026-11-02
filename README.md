@@ -1,4 +1,4 @@
-# CareWell - Hospital Management System (HMS)
+# TrueCare - Hospital Management System (HMS)
 ### High-Performance C-Powered Web Application & Mini-Project
 **Target Level:** B.Tech / B.E. (Computer Science & Information Technology, 1st & 2nd Year)  
 **Core Technologies:** 100% C Programming (C99/C11), Windows Sockets (Winsock2), HTML5, CSS3, JavaScript (ES6)
@@ -21,7 +21,7 @@
 
 ## 1. Project Overview & Objectives
 
-Traditional introductory C programming mini-projects are restricted to plain black-and-white console terminal screens with numbered text menus. The **CareWell Hospital Management System** bridges foundational C data structures with modern user interfaces by running an **integrated C HTTP web engine**.
+Traditional introductory C programming mini-projects are restricted to plain black-and-white console terminal screens with numbered text menus. The **TrueCare Hospital Management System** bridges foundational C data structures with modern user interfaces by running an **integrated C HTTP web engine**.
 
 ### Primary Objectives:
 1. **Demonstrate Core C Concepts:** Showcase practical implementations of Structures (`struct`), Arrays of Structures, Pointers, Functions, Control Flow (`switch-case`), and File I/O (`fopen`, `fprintf`, `fscanf`).

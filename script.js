@@ -1,5 +1,5 @@
 /**
- * CAREWELL HOSPITAL MANAGEMENT SYSTEM - FRONTEND ENGINE
+ * TRUECARE HOSPITAL MANAGEMENT SYSTEM - FRONTEND ENGINE
  * Connects directly to the native C backend (main.c) via HTTP REST endpoints.
  * All data storage, structures, arrays, and calculations are executed in C.
  */
@@ -43,10 +43,10 @@ function loadData() {
 }
 
 function fallbackLocalStorage() {
-  const p = localStorage.getItem("carewell_patients");
-  const d = localStorage.getItem("carewell_doctors");
-  const a = localStorage.getItem("carewell_appointments");
-  const b = localStorage.getItem("carewell_bills");
+  const p = localStorage.getItem("truecare_patients") || localStorage.getItem("carewell_patients");
+  const d = localStorage.getItem("truecare_doctors") || localStorage.getItem("carewell_doctors");
+  const a = localStorage.getItem("truecare_appointments") || localStorage.getItem("carewell_appointments");
+  const b = localStorage.getItem("truecare_bills") || localStorage.getItem("carewell_bills");
 
   patients = p ? JSON.parse(p) : [
     { id: 101, name: "Rahul Sharma", age: 32, gender: "Male", phone: "9876543210", disease: "Viral Fever & Fatigue" },
@@ -277,7 +277,7 @@ function handlePatientSubmit(e) {
   } else {
     const nextId = patients.length > 0 ? Math.max(...patients.map(p => p.id)) + 1 : 101;
     patients.push({ id: nextId, ...payload });
-    localStorage.setItem("carewell_patients", JSON.stringify(patients));
+    localStorage.setItem("truecare_patients", JSON.stringify(patients));
     closeModal("modalAddPatient");
     document.getElementById("formAddPatient").reset();
     renderAll();
@@ -301,7 +301,7 @@ function deletePatient(id) {
         });
     } else {
       patients = patients.filter(item => item.id !== id);
-      localStorage.setItem("carewell_patients", JSON.stringify(patients));
+      localStorage.setItem("truecare_patients", JSON.stringify(patients));
       renderAll();
     }
   }
@@ -367,7 +367,7 @@ function handleDoctorSubmit(e) {
   } else {
     const nextId = doctors.length > 0 ? Math.max(...doctors.map(d => d.id)) + 1 : 201;
     doctors.push({ id: nextId, ...payload });
-    localStorage.setItem("carewell_doctors", JSON.stringify(doctors));
+    localStorage.setItem("truecare_doctors", JSON.stringify(doctors));
     closeModal("modalAddDoctor");
     document.getElementById("formAddDoctor").reset();
     renderAll();
@@ -427,7 +427,7 @@ function cancelAppointment(id) {
         });
     } else {
       appointments = appointments.filter(a => a.id !== id);
-      localStorage.setItem("carewell_appointments", JSON.stringify(appointments));
+      localStorage.setItem("truecare_appointments", JSON.stringify(appointments));
       renderAll();
     }
   }
@@ -467,7 +467,7 @@ function handleAppointmentSubmit(e) {
       doctorName: d ? d.name : "Unknown",
       date
     });
-    localStorage.setItem("carewell_appointments", JSON.stringify(appointments));
+    localStorage.setItem("truecare_appointments", JSON.stringify(appointments));
     closeModal("modalBookAppt");
     document.getElementById("formBookAppt").reset();
     renderAll();
@@ -559,7 +559,7 @@ function handleBillSubmit(e) {
       date: todayStr
     };
     bills.push(newBill);
-    localStorage.setItem("carewell_bills", JSON.stringify(bills));
+    localStorage.setItem("truecare_bills", JSON.stringify(bills));
     closeModal("modalCreateBill");
     renderAll();
     openReceiptModal(newBill.id);

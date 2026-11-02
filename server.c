@@ -143,7 +143,7 @@ int main(void) {
     }
 
     printf("====================================================================\n");
-    printf("         CAREWELL HOSPITAL MANAGEMENT - LOCAL C WEB SERVER          \n");
+    printf("         TRUECARE HOSPITAL MANAGEMENT - LOCAL C WEB SERVER          \n");
     printf("====================================================================\n");
     printf(" Server running in native C!\n");
     printf(" Access the Web Interface at:  http://localhost:%d\n", PORT);
