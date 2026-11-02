@@ -1,0 +1,9 @@
+# Temporary object files
+*.o
+*.obj
+
+# Editor & OS files
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini

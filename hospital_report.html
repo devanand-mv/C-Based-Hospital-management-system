@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CareWell Hospital Report</title>
+<style>
+body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f4f9fc; color: #2c3e50; margin: 30px; }
+.container { max-width: 1100px; margin: auto; background: #ffffff; padding: 35px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+h1 { color: #0284c7; margin-bottom: 5px; }
+.subtitle { color: #64748b; margin-top: 0; font-size: 15px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin: 25px 0; }
+.card { background: #f0fdfa; border-left: 5px solid #0d9488; padding: 18px; border-radius: 8px; }
+.card h3 { margin: 0; font-size: 13px; color: #0f766e; text-transform: uppercase; }
+.card .num { font-size: 28px; font-weight: bold; color: #0284c7; margin-top: 8px; }
+table { width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 30px; font-size: 14px; }
+th { background: #0284c7; color: white; text-align: left; padding: 10px 12px; border-radius: 3px; }
+td { padding: 10px 12px; border-bottom: 1px solid #e2e8f0; }
+tr:nth-child(even) { background: #f8fafc; }
+h2 { color: #0f766e; border-bottom: 2px solid #ccfbf1; padding-bottom: 6px; margin-top: 30px; }
+.badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; background: #e0f2fe; color: #0369a1; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>CareWell Hospital Management System</h1>
+<p class="subtitle">Generated automatically by CareWell C-Engine Application</p>
+<div class="cards">
+  <div class="card"><h3>Total Patients</h3><div class="num">4</div></div>
+  <div class="card"><h3>Total Doctors</h3><div class="num">4</div></div>
+  <div class="card"><h3>Appointments</h3><div class="num">3</div></div>
+  <div class="card"><h3>Total Revenue</h3><div class="num">Rs. 4000.00</div></div>
+</div>
+<h2>Registered Patients (4)</h2>
+<table><thead><tr><th>ID</th><th>Patient Name</th><th>Age</th><th>Gender</th><th>Phone</th><th>Diagnosis</th></tr></thead><tbody>
+<tr><td><span class="badge">#101</span></td><td><strong>Rahul Sharma</strong></td><td>32</td><td>Male</td><td>9876543210</td><td>Viral Fever & Fatigue</td></tr>
+<tr><td><span class="badge">#102</span></td><td><strong>Priya Patel</strong></td><td>27</td><td>Female</td><td>9823456789</td><td>Migraine & Tension</td></tr>
+<tr><td><span class="badge">#103</span></td><td><strong>Amit Verma</strong></td><td>54</td><td>Male</td><td>9123456780</td><td>Hypertension & Diabetes</td></tr>
+<tr><td><span class="badge">#104</span></td><td><strong>Sneha Kulkarni</strong></td><td>41</td><td>Female</td><td>9988776655</td><td>Orthopedic Knee Pain</td></tr>
+</tbody></table>
+<h2>Doctors Directory (4)</h2>
+<table><thead><tr><th>Doctor ID</th><th>Doctor Name</th><th>Specialization</th><th>Contact</th></tr></thead><tbody>
+<tr><td><span class="badge">#201</span></td><td>Dr. Aditi Roy</td><td>Cardiology</td><td>9845011223</td></tr>
+<tr><td><span class="badge">#202</span></td><td>Dr. Vikram Mehta</td><td>Neurology</td><td>9819022334</td></tr>
+<tr><td><span class="badge">#203</span></td><td>Dr. Rajesh Nair</td><td>Orthopedics</td><td>9769033445</td></tr>
+<tr><td><span class="badge">#204</span></td><td>Dr. Sunita Rao</td><td>General Medicine</td><td>9821044556</td></tr>
+</tbody></table>
+<h2>Scheduled Appointments (3)</h2>
+<table><thead><tr><th>Appt ID</th><th>Patient</th><th>Doctor</th><th>Date</th></tr></thead><tbody>
+<tr><td><span class="badge">#301</span></td><td>Rahul Sharma</td><td>Dr. Sunita Rao</td><td>2026-11-05</td></tr>
+<tr><td><span class="badge">#302</span></td><td>Priya Patel</td><td>Dr. Vikram Mehta</td><td>2026-11-06</td></tr>
+<tr><td><span class="badge">#303</span></td><td>Sneha Kulkarni</td><td>Dr. Rajesh Nair</td><td>2026-11-07</td></tr>
+</tbody></table>
+<h2>Billing & Invoices (2)</h2>
+<table><thead><tr><th>Invoice</th><th>Patient</th><th>Consultation</th><th>Medicines</th><th>Treatment</th><th>Total Bill</th></tr></thead><tbody>
+<tr><td><span class="badge">INV-401</span></td><td>Rahul Sharma</td><td>Rs. 500.00</td><td>Rs. 650.00</td><td>Rs. 250.00</td><td><strong>Rs. 1400.00</strong></td></tr>
+<tr><td><span class="badge">INV-402</span></td><td>Amit Verma</td><td>Rs. 600.00</td><td>Rs. 1200.00</td><td>Rs. 800.00</td><td><strong>Rs. 2600.00</strong></td></tr>
+</tbody></table>
+<p style="text-align: center; color: #94a3b8; font-size: 13px; margin-top: 40px;">C Programming Mini-Project &bull; CareWell Hospital Management System</p>
+</div>
+</body>
+</html>

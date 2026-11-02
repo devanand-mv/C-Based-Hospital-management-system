@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareWell - Hospital Management System</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 6v12M6 12h12"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h2>CareWell</h2>
+          <span>Hospital System</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <button class="nav-item active" data-tab="dashboard">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+            <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+            <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+            <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+          </svg>
+          <span>Dashboard</span>
+        </button>
+
+        <button class="nav-item" data-tab="patients">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          <span>Patients</span>
+          <span class="nav-badge" id="badgePatients">0</span>
+        </button>
+
+        <button class="nav-item" data-tab="doctors">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <line x1="19" y1="8" x2="19" y2="14"/>
+            <line x1="22" y1="11" x2="16" y2="11"/>
+          </svg>
+          <span>Doctors</span>
+          <span class="nav-badge" id="badgeDoctors">0</span>
+        </button>
+
+        <button class="nav-item" data-tab="appointments">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          <span>Appointments</span>
+          <span class="nav-badge" id="badgeAppointments">0</span>
+        </button>
+
+        <button class="nav-item" data-tab="billing">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="1" x2="12" y2="23"/>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+          <span>Billing</span>
+          <span class="nav-badge" id="badgeBills">0</span>
+        </button>
+
+        <button class="nav-item" data-tab="guide">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12.01" y2="8"/>
+          </svg>
+          <span>C Project Viva</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span class="status-text">C Mini-Project Ready</span>
+        </div>
+        <p class="credit">B.Tech First/Second Year</p>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="main-content">
+      <!-- HEADER -->
+      <header class="top-header">
+        <div class="header-title">
+          <h1 id="pageTitle">Dashboard</h1>
+          <p id="pageSubtitle">Hospital activity overview and real-time statistics</p>
+        </div>
+        <div class="header-actions">
+          <span class="current-date" id="liveDate"></span>
+          <button class="btn btn-secondary btn-sm" onclick="resetToSampleData()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+            Reset Data
+          </button>
+        </div>
+      </header>
+
+      <!-- TAB 1: DASHBOARD VIEW -->
+      <section id="view-dashboard" class="tab-view active">
+        <!-- Dashboard Stat Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Total Patients</span>
+              <div class="stat-icon bg-blue-subtle text-blue">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              </div>
+            </div>
+            <div class="stat-value" id="dashTotalPatients">0</div>
+            <div class="stat-footer text-teal">
+              <span>&#x25B2; Active registered records</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Total Doctors</span>
+              <div class="stat-icon bg-teal-subtle text-teal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+              </div>
+            </div>
+            <div class="stat-value" id="dashTotalDoctors">0</div>
+            <div class="stat-footer text-teal">
+              <span>Specialists on duty</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Appointments</span>
+              <div class="stat-icon bg-blue-subtle text-blue">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+            </div>
+            <div class="stat-value" id="dashTotalAppointments">0</div>
+            <div class="stat-footer text-blue">
+              <span>Scheduled consultations</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-label">Total Revenue</span>
+              <div class="stat-icon bg-teal-subtle text-teal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </div>
+            </div>
+            <div class="stat-value" id="dashTotalRevenue">Rs. 0</div>
+            <div class="stat-footer text-teal">
+              <span>Billed across all treatments</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions & Overview Cards -->
+        <div class="dashboard-columns">
+          <div class="card recent-card">
+            <div class="card-header">
+              <div>
+                <h3>Recent Patients</h3>
+                <p>Latest registered patients in hospital</p>
+              </div>
+              <button class="btn btn-outline btn-sm" onclick="switchTab('patients')">View All</button>
+            </div>
+            <div class="card-body">
+              <div id="dashRecentPatients" class="mini-list"></div>
+            </div>
+          </div>
+
+          <div class="card recent-card">
+            <div class="card-header">
+              <div>
+                <h3>Upcoming Appointments</h3>
+                <p>Scheduled doctor consultations</p>
+              </div>
+              <button class="btn btn-outline btn-sm" onclick="switchTab('appointments')">View All</button>
+            </div>
+            <div class="card-body">
+              <div id="dashRecentAppointments" class="mini-list"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Access Shortcuts -->
+        <div class="quick-banner">
+          <div class="banner-text">
+            <h3>CareWell Hospital System Controls</h3>
+            <p>Execute hospital operations directly or review the underlying C programming logic.</p>
+          </div>
+          <div class="banner-buttons">
+            <button class="btn btn-primary" onclick="openModal('modalAddPatient')">+ Add Patient</button>
+            <button class="btn btn-teal" onclick="openModal('modalBookAppt')">+ Book Appointment</button>
+            <button class="btn btn-secondary" onclick="openModal('modalCreateBill')">+ Generate Bill</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: PATIENT MANAGEMENT -->
+      <section id="view-patients" class="tab-view">
+        <div class="view-header-bar">
+          <div class="search-box">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="patientSearchInput" placeholder="Search by Patient ID, Name, or Disease..." onkeyup="filterPatients()">
+          </div>
+          <button class="btn btn-primary" onclick="openModal('modalAddPatient')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Add New Patient
+          </button>
+        </div>
+
+        <div class="table-container card">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Patient ID</th>
+                <th>Full Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Phone Number</th>
+                <th>Disease / Diagnosis</th>
+                <th class="text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="patientTableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 3: DOCTOR MANAGEMENT -->
+      <section id="view-doctors" class="tab-view">
+        <div class="view-header-bar">
+          <div class="search-box">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="doctorSearchInput" placeholder="Search by Doctor Name or Specialization..." onkeyup="filterDoctors()">
+          </div>
+          <button class="btn btn-primary" onclick="openModal('modalAddDoctor')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Add New Doctor
+          </button>
+        </div>
+
+        <div class="table-container card">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Doctor ID</th>
+                <th>Doctor Name</th>
+                <th>Specialization</th>
+                <th>Phone Number</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="doctorTableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 4: APPOINTMENT MANAGEMENT -->
+      <section id="view-appointments" class="tab-view">
+        <div class="view-header-bar">
+          <div class="search-box">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="apptSearchInput" placeholder="Search by Patient or Doctor..." onkeyup="filterAppointments()">
+          </div>
+          <button class="btn btn-teal" onclick="openModal('modalBookAppt')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Book Appointment
+          </button>
+        </div>
+
+        <div class="table-container card">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Appt ID</th>
+                <th>Patient Details</th>
+                <th>Assigned Doctor</th>
+                <th>Appointment Date</th>
+                <th>Status</th>
+                <th class="text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="appointmentTableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 5: BILLING MANAGEMENT -->
+      <section id="view-billing" class="tab-view">
+        <div class="view-header-bar">
+          <div class="search-box">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="billSearchInput" placeholder="Search by Invoice ID or Patient..." onkeyup="filterBills()">
+          </div>
+          <button class="btn btn-primary" onclick="openModal('modalCreateBill')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            Generate Patient Bill
+          </button>
+        </div>
+
+        <div class="table-container card">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Invoice ID</th>
+                <th>Patient Name</th>
+                <th>Consultation Fee</th>
+                <th>Medicine Charges</th>
+                <th>Treatment Charges</th>
+                <th>Total Payable</th>
+                <th class="text-right">Receipt</th>
+              </tr>
+            </thead>
+            <tbody id="billTableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 6: C PROJECT VIVA GUIDE -->
+      <section id="view-guide" class="tab-view">
+        <div class="guide-grid">
+          <div class="card guide-card">
+            <h3>B.Tech C Mini-Project Architecture</h3>
+            <p>This project models real-world hospital workflows using fundamental C concepts required in standard engineering curricula:</p>
+            <div class="concept-tags">
+              <span class="tag">Structures (struct)</span>
+              <span class="tag">Arrays of Structures</span>
+              <span class="tag">Functions & Prototypes</span>
+              <span class="tag">Loops & Switch-Case</span>
+              <span class="tag">String Manipulation</span>
+              <span class="tag">File Handling (fopen, fprintf, fscanf)</span>
+            </div>
+
+            <h4 style="margin-top: 20px;">1. Compilation & Execution Commands:</h4>
+            <div class="code-box">
+              <code># Compile C Engine with Windows Sockets<br>gcc main.c -o hospital.exe -lws2_32<br><br># Run Application (Auto-opens website in browser!)<br>.\hospital.exe</code>
+            </div>
+
+            <h4 style="margin-top: 15px;">2. Data Structures Used in C:</h4>
+            <div class="code-box">
+              <code>struct Patient {<br>&nbsp;&nbsp;int id;<br>&nbsp;&nbsp;char name[50];<br>&nbsp;&nbsp;int age;<br>&nbsp;&nbsp;char gender[10];<br>&nbsp;&nbsp;char phone[15];<br>&nbsp;&nbsp;char disease[50];<br>};<br><br>Patient patients[MAX_PATIENTS]; // Array of structures</code>
+            </div>
+          </div>
+
+          <div class="card guide-card">
+            <h3>Viva Voce Questions & Answers</h3>
+            <div class="viva-item">
+              <strong>Q1. Why are Arrays of Structures used in this project?</strong>
+              <p>An array of structures allows grouping heterogenous attributes of a patient (integers for ID/age, character arrays for name/disease) into a single entity, and storing multiple such records contiguously in memory for indexed retrieval.</p>
+            </div>
+            <div class="viva-item">
+              <strong>Q2. How is patient deletion handled in C?</strong>
+              <p>When a patient at index <code>idx</code> is deleted, elements from <code>idx + 1</code> to <code>count - 1</code> are shifted left by one position, and the counter is decremented: <code>patients[i] = patients[i + 1]</code>.</p>
+            </div>
+            <div class="viva-item">
+              <strong>Q3. How is persistent storage achieved?</strong>
+              <p>Using standard C file I/O (<code>fopen</code> in <code>"w"</code> and <code>"r"</code> mode), records are serialized with delimited formatting to <code>hospital_data.txt</code>, surviving program restarts.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- MODAL: ADD PATIENT -->
+  <div class="modal-overlay" id="modalAddPatient">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>Register New Patient</h3>
+        <button class="modal-close" onclick="closeModal('modalAddPatient')">&times;</button>
+      </div>
+      <form id="formAddPatient" onsubmit="handlePatientSubmit(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Assigned Patient ID</label>
+            <input type="text" id="pIdPreview" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" id="pName" class="form-control" placeholder="e.g. Ramesh Chandra" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Age *</label>
+              <input type="number" id="pAge" class="form-control" min="1" max="120" placeholder="e.g. 35" required>
+            </div>
+            <div class="form-group">
+              <label>Gender *</label>
+              <select id="pGender" class="form-control" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" id="pPhone" class="form-control" placeholder="10-digit mobile number" required>
+          </div>
+          <div class="form-group">
+            <label>Disease / Medical Diagnosis *</label>
+            <input type="text" id="pDisease" class="form-control" placeholder="e.g. Acute Bronchitis, Fever" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('modalAddPatient')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Patient</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: ADD DOCTOR -->
+  <div class="modal-overlay" id="modalAddDoctor">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>Add Doctor Details</h3>
+        <button class="modal-close" onclick="closeModal('modalAddDoctor')">&times;</button>
+      </div>
+      <form id="formAddDoctor" onsubmit="handleDoctorSubmit(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Assigned Doctor ID</label>
+            <input type="text" id="docIdPreview" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label>Doctor Full Name *</label>
+            <input type="text" id="docName" class="form-control" placeholder="e.g. Dr. Kavita Sharma" required>
+          </div>
+          <div class="form-group">
+            <label>Specialization *</label>
+            <input type="text" id="docSpecialization" class="form-control" placeholder="e.g. Cardiology, Pediatrics, General" required>
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" id="docPhone" class="form-control" placeholder="Contact number" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('modalAddDoctor')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Doctor</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: BOOK APPOINTMENT -->
+  <div class="modal-overlay" id="modalBookAppt">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>Book Medical Appointment</h3>
+        <button class="modal-close" onclick="closeModal('modalBookAppt')">&times;</button>
+      </div>
+      <form id="formBookAppt" onsubmit="handleAppointmentSubmit(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Select Patient *</label>
+            <select id="apptPatientSelect" class="form-control" required></select>
+          </div>
+          <div class="form-group">
+            <label>Select Doctor *</label>
+            <select id="apptDoctorSelect" class="form-control" required></select>
+          </div>
+          <div class="form-group">
+            <label>Appointment Date *</label>
+            <input type="date" id="apptDate" class="form-control" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('modalBookAppt')">Cancel</button>
+          <button type="submit" class="btn btn-teal">Confirm Appointment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: GENERATE BILL -->
+  <div class="modal-overlay" id="modalCreateBill">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>Generate Patient Bill</h3>
+        <button class="modal-close" onclick="closeModal('modalCreateBill')">&times;</button>
+      </div>
+      <form id="formCreateBill" onsubmit="handleBillSubmit(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Select Patient *</label>
+            <select id="billPatientSelect" class="form-control" required></select>
+          </div>
+          <div class="form-group">
+            <label>Consultation Fee (Rs.) *</label>
+            <input type="number" id="billConsultation" class="form-control" min="0" step="50" value="500" required oninput="calcBillPreview()">
+          </div>
+          <div class="form-group">
+            <label>Medicine Charges (Rs.) *</label>
+            <input type="number" id="billMedicines" class="form-control" min="0" step="10" value="350" required oninput="calcBillPreview()">
+          </div>
+          <div class="form-group">
+            <label>Treatment / Lab Charges (Rs.) *</label>
+            <input type="number" id="billTreatment" class="form-control" min="0" step="10" value="200" required oninput="calcBillPreview()">
+          </div>
+
+          <div class="bill-total-banner">
+            <span>Total Payable:</span>
+            <strong id="billPreviewTotal">Rs. 1,050.00</strong>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('modalCreateBill')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Generate Invoice</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: PRINTABLE RECEIPT -->
+  <div class="modal-overlay" id="modalInvoiceReceipt">
+    <div class="modal-dialog modal-receipt">
+      <div class="receipt-paper" id="receiptContent">
+        <div class="receipt-header">
+          <div class="receipt-cross">+</div>
+          <h2>CareWell Multispeciality Hospital</h2>
+          <p>Sector 12, Healthcare Enclave &bull; Helpline: +91 1800-CARE-WELL</p>
+          <div class="receipt-badge">PATIENT BILLING INVOICE</div>
+        </div>
+
+        <div class="receipt-meta">
+          <div>
+            <strong>Invoice No:</strong> <span id="recInvoiceId"></span><br>
+            <strong>Date:</strong> <span id="recDate"></span>
+          </div>
+          <div style="text-align: right;">
+            <strong>Patient ID:</strong> <span id="recPatientId"></span><br>
+            <strong>Patient Name:</strong> <span id="recPatientName"></span>
+          </div>
+        </div>
+
+        <table class="receipt-table">
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th style="text-align: right;">Amount (Rs.)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Doctor Consultation Charges</td>
+              <td style="text-align: right;" id="recConsultation"></td>
+            </tr>
+            <tr>
+              <td>Pharmacy & Medicine Charges</td>
+              <td style="text-align: right;" id="recMedicine"></td>
+            </tr>
+            <tr>
+              <td>Hospital & Treatment Charges</td>
+              <td style="text-align: right;" id="recTreatment"></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="grand-total-row">
+              <td><strong>TOTAL PAYABLE AMOUNT</strong></td>
+              <td style="text-align: right;"><strong id="recTotal"></strong></td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <div class="receipt-footer">
+          <p>Thank you for choosing CareWell Hospital. We wish you a speedy recovery!</p>
+          <div class="authorized-sign">Authorized Signatory</div>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="background: #f8fafc; border-top: 1px solid #e2e8f0;">
+        <button class="btn btn-secondary" onclick="closeModal('modalInvoiceReceipt')">Close</button>
+        <button class="btn btn-primary" onclick="window.print()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Print Receipt
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

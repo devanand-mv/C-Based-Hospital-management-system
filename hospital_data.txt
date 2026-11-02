@@ -1,0 +1,17 @@
+[PATIENTS] 4
+101|Rahul Sharma|32|Male|9876543210|Viral Fever & Fatigue
+102|Priya Patel|27|Female|9823456789|Migraine & Tension
+103|Amit Verma|54|Male|9123456780|Hypertension & Diabetes
+104|Sneha Kulkarni|41|Female|9988776655|Orthopedic Knee Pain
+[DOCTORS] 4
+201|Aditi Roy|Cardiology|9845011223
+202|Vikram Mehta|Neurology|9819022334
+203|Rajesh Nair|Orthopedics|9769033445
+204|Sunita Rao|General Medicine|9821044556
+[APPOINTMENTS] 3
+301|101|Rahul Sharma|204|Sunita Rao|2026-11-05
+302|102|Priya Patel|202|Vikram Mehta|2026-11-06
+303|104|Sneha Kulkarni|203|Rajesh Nair|2026-11-07
+[BILLS] 2
+401|101|Rahul Sharma|500.00|650.00|250.00|1400.00
+402|103|Amit Verma|600.00|1200.00|800.00|2600.00
