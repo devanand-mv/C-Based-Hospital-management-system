@@ -1,3 +1,6 @@
+# Executables (compiled binaries)
+*.exe
+
 # Temporary object files
 *.o
 *.obj
