@@ -113,12 +113,11 @@ function switchTab(tabId) {
   if (targetView) targetView.classList.add("active");
 
   const titleMap = {
-    dashboard: { title: "Dashboard", sub: "Hospital activity overview and real-time statistics powered by C" },
-    patients: { title: "Patient Management", sub: "Register, monitor, search and manage patient profiles in C array" },
-    doctors: { title: "Doctor Management", sub: "Hospital clinical staff and specialist directory in C struct" },
+    dashboard: { title: "Dashboard", sub: "Hospital activity overview and real-time statistics" },
+    patients: { title: "Patient Management", sub: "Register, monitor, search and manage patient profiles" },
+    doctors: { title: "Doctor Management", sub: "Hospital clinical staff and specialist directory" },
     appointments: { title: "Appointment Management", sub: "Schedule and manage doctor-patient consultations" },
-    billing: { title: "Billing & Invoices", sub: "Itemized fee calculation in C engine and receipt generation" },
-    guide: { title: "C Project Viva Guide", sub: "Structures, arrays, HTTP server architecture & viva concepts" }
+    billing: { title: "Billing & Invoices", sub: "Itemized fee calculation and receipt generation" }
   };
 
   if (titleMap[tabId]) {

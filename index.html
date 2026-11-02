@@ -77,23 +77,14 @@
           <span>Billing</span>
           <span class="nav-badge" id="badgeBills">0</span>
         </button>
-
-        <button class="nav-item" data-tab="guide">
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="12" y1="16" x2="12" y2="12"/>
-            <line x1="12" y1="8" x2="12.01" y2="8"/>
-          </svg>
-          <span>C Project Viva</span>
-        </button>
       </nav>
 
       <div class="sidebar-footer">
         <div class="status-indicator">
           <span class="status-dot"></span>
-          <span class="status-text">C Mini-Project Ready</span>
+          <span class="status-text">System Online</span>
         </div>
-        <p class="credit">B.Tech First/Second Year</p>
+        <p class="credit">CareWell Healthcare Portal</p>
       </div>
     </aside>
 
@@ -340,50 +331,6 @@
               <!-- Dynamically populated -->
             </tbody>
           </table>
-        </div>
-      </section>
-
-      <!-- TAB 6: C PROJECT VIVA GUIDE -->
-      <section id="view-guide" class="tab-view">
-        <div class="guide-grid">
-          <div class="card guide-card">
-            <h3>B.Tech C Mini-Project Architecture</h3>
-            <p>This project models real-world hospital workflows using fundamental C concepts required in standard engineering curricula:</p>
-            <div class="concept-tags">
-              <span class="tag">Structures (struct)</span>
-              <span class="tag">Arrays of Structures</span>
-              <span class="tag">Functions & Prototypes</span>
-              <span class="tag">Loops & Switch-Case</span>
-              <span class="tag">String Manipulation</span>
-              <span class="tag">File Handling (fopen, fprintf, fscanf)</span>
-            </div>
-
-            <h4 style="margin-top: 20px;">1. Compilation & Execution Commands:</h4>
-            <div class="code-box">
-              <code># Compile C Engine with Windows Sockets<br>gcc main.c -o hospital.exe -lws2_32<br><br># Run Application (Auto-opens website in browser!)<br>.\hospital.exe</code>
-            </div>
-
-            <h4 style="margin-top: 15px;">2. Data Structures Used in C:</h4>
-            <div class="code-box">
-              <code>struct Patient {<br>&nbsp;&nbsp;int id;<br>&nbsp;&nbsp;char name[50];<br>&nbsp;&nbsp;int age;<br>&nbsp;&nbsp;char gender[10];<br>&nbsp;&nbsp;char phone[15];<br>&nbsp;&nbsp;char disease[50];<br>};<br><br>Patient patients[MAX_PATIENTS]; // Array of structures</code>
-            </div>
-          </div>
-
-          <div class="card guide-card">
-            <h3>Viva Voce Questions & Answers</h3>
-            <div class="viva-item">
-              <strong>Q1. Why are Arrays of Structures used in this project?</strong>
-              <p>An array of structures allows grouping heterogenous attributes of a patient (integers for ID/age, character arrays for name/disease) into a single entity, and storing multiple such records contiguously in memory for indexed retrieval.</p>
-            </div>
-            <div class="viva-item">
-              <strong>Q2. How is patient deletion handled in C?</strong>
-              <p>When a patient at index <code>idx</code> is deleted, elements from <code>idx + 1</code> to <code>count - 1</code> are shifted left by one position, and the counter is decremented: <code>patients[i] = patients[i + 1]</code>.</p>
-            </div>
-            <div class="viva-item">
-              <strong>Q3. How is persistent storage achieved?</strong>
-              <p>Using standard C file I/O (<code>fopen</code> in <code>"w"</code> and <code>"r"</code> mode), records are serialized with delimited formatting to <code>hospital_data.txt</code>, surviving program restarts.</p>
-            </div>
-          </div>
         </div>
       </section>
     </main>
