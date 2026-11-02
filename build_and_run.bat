@@ -6,18 +6,30 @@ echo        TRUECARE HOSPITAL MANAGEMENT SYSTEM - C WEB ENGINE
 echo ====================================================================
 echo.
 
-:: Ensure MinGW GCC is in the current session PATH
-set "PATH=C:\Users\mvdev\w64devkit\bin;%PATH%"
+:: Check common MinGW GCC installation locations if not already in PATH
+where gcc >nul 2>&1
+if %ERRORLEVEL% NEQ 0 (
+    if exist "%USERPROFILE%\w64devkit\bin\gcc.exe" (
+        set "PATH=%USERPROFILE%\w64devkit\bin;%PATH%"
+    ) else if exist "C:\w64devkit\bin\gcc.exe" (
+        set "PATH=C:\w64devkit\bin;%PATH%"
+    ) else if exist "C:\MinGW\bin\gcc.exe" (
+        set "PATH=C:\MinGW\bin;%PATH%"
+    ) else if exist "C:\Program Files\CodeBlocks\MinGW\bin\gcc.exe" (
+        set "PATH=C:\Program Files\CodeBlocks\MinGW\bin;%PATH%"
+    )
+)
 
 echo Checking GCC Compiler...
 gcc --version >nul 2>&1
 if %ERRORLEVEL% NEQ 0 (
-    echo [!] Error: GCC compiler not found in C:\Users\mvdev\w64devkit\bin
+    echo [!] GCC Compiler was not found in your system PATH.
+    echo Please ensure GCC (MinGW or Code::Blocks) is installed.
     pause
     exit /b %ERRORLEVEL%
 )
 
-echo [OK] MinGW GCC 13.2.0 is available!
+echo [OK] GCC Compiler found!
 echo Compiling main.c with Windows Sockets (-lws2_32)...
 gcc main.c -o hospital.exe -lws2_32
 
